@@ -1,14 +1,13 @@
-include ../../components/navigation/markup/navigation.jade
+include ../../components/link-list/markup/link-list.jade
 
 header.container
   div(class="row")
-    if(utilityNav)
-      nav(id="utility-nav" class="navigation clearfix row")
-        +navigation(utilityNav)
-  div(class="row")
     div(class="logo")
-      a(href="#")
-        img(src="#" alt="" title="")
+      a(href="/")
+        img(src="/assets/logo.png" alt="Starkey Logo" title="Starkey Logo")
+    if(utilityNav)
+      nav(id="utility-nav" class="navigation clearfix")
+        +linkList(utilityNav.links)
     if(mainNav)
       nav(id="main-nav" class="navigation")
-        +navigation(mainNav)
+        +linkList(mainNav.links)
