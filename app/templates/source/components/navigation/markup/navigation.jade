@@ -1,0 +1,5 @@
+mixin navigation(data)
+  ul
+    each link in data.links
+      li
+        a(href="#{link.href}" target="#{link.target}") #{link.text}

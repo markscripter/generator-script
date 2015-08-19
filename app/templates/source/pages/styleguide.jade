@@ -1,0 +1,81 @@
+doctype html
+html(lang="en")
+ head
+  title= pageTitle
+  
+  block meta
+    meta(charset="utf-8")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="description" content="")
+    meta(name="keywords" content="")
+  
+  block links
+    link(rel="shortcut icon" href="/static/misc/favicon.ico")
+    link(rel="stylesheet" href="/css/styleguide.css")
+ body.container
+  block content
+    header.toolbar.row
+      
+
+    section.clearfix
+      hgroup.row
+        h1.col-xs-12.title Style Guide
+      
+    //- Colors
+    section.clearfix
+      hgroup.row.section-title
+        h2.col-xs-12 Color Swatches
+      article.content.row
+        div.col-xs-12.content-title
+          h3 Main Colors
+        div.col-xs-12
+          div.colorSwatch.black.col-xs-3
+            p #000000 - Black
+          div.colorSwatch.white.col-xs-3
+            p #ffffff - White
+        div.col-xs-12.content-title
+          h3 Gray Colors
+        div.col-xs-12
+          div.colorSwatch.lightGray.col-xs-3
+            p #bfbfbf - Light Gray
+          div.colorSwatch.gray.col-xs-3
+            p #808080 - Gray
+          div.colorSwatch.darkGray.col-xs-3
+            p #404040 - Dark Gray
+        div.col-xs-12.content-title
+          h3 Theme Colors
+        div.col-xs-12
+          div.colorSwatch.primary.col-xs-3
+            p #0000FF - Blue
+          div.colorSwatch.secondary.col-xs-3
+            p #FF0000 - Red
+          div.colorSwatch.accent.col-xs-3
+            p #FFFF00 - Yellow
+    
+    //- Typography
+    section.clearfix
+      hgroup.row.section-title
+        h2.col-xs-12 Typography
+      article.content.row
+        p.serif Serif Font
+        p.sans-serif Sans Serif Font
+        p.mono Monospace Font
+    
+    //- Headings
+    section.clearfix
+      hgroup.row.section-title
+        h2.col-xs-12 Headings
+      article.content.row
+        h1 Heading 1
+        h2 Heading 2
+        h3 Heading 3
+        h4 Heading 4
+        h5 Heading 5
+        h6 Heading 6
+    
+    //- Lists
+    //- Buttons
+    //- Forms
+    //- Tables
+  block scripts
+    

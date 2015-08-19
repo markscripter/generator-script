@@ -1,0 +1,29 @@
+{
+  "name": "generator-script",
+  "version": "0.0.0",
+  "license": "",
+  "description": "Mark Scripter's Yeoman Generator",
+  "main": "./app/index.js",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "files": [
+    "less",
+    "sass"
+  ],
+  "author": {
+    "name": "Mark Scripter",
+    "email": "mark@mscriptdesign.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/markscripter/generator-script"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "yeoman-generator": "^0.20.2"
+  }
+}

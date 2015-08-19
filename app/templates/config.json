@@ -1,0 +1,29 @@
+{
+  "paths": {
+    "compData" : "/source/components/**/**.json",
+    "components": "/source/components/",
+    "cssLibraries": [
+      "/bower_components/normalize.css/normalize.css"
+    ],
+    "data" : "/source/pages/siteData.json",
+    "javascript": "/source/javascript/",
+    "jsLibraries" : [
+      "/bower_components/lodash/lodash.min.js",
+      "/bower_components/scrollReveal.js/dist/scrollReveal.min.js",
+      "/bower_components/jquery/dist/jquery.min.js"
+    ],
+    "jsMaps" : [
+      "/bower_components/jquery/dist/jquery.min.map"
+    ],
+    "logs": "/logs/",
+    "pages": "/source/pages/**.jade",
+    "public": "/public/",
+    "routes": "/source/_routes.js",
+    "styleguide": {
+      "styles": "/source/styles/styleguide/styleguide.less",
+      "pages": "/source/pages/styleguide.jade"
+    },
+    "styles": "/source/styles/",
+    "svg": "/source/svg/"
+  }
+}

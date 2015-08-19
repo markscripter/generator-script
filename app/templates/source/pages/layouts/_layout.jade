@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+ head
+  title= pageTitle
+  
+  block meta
+    meta(charset="utf-8")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="description" content="")
+    meta(name="keywords" content="")
+  
+  block links
+    link(rel="shortcut icon" href="/static/misc/favicon.ico")
+    link(type="text/css" rel="stylesheet" media="all" href="/css/stylesheet.min.css")
+ body.container
+  include ../partials/_header.jade
+  
+  block content
+  
+  include ../partials/_footer.jade
+  
+  block scripts
+    script(type="text/javascript" src="/js/libs.min.js")
+    script(type="text/javascript" src="/js/global.min.js")

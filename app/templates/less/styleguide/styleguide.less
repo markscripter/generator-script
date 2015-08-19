@@ -1,0 +1,64 @@
+@import "../main.less";
+@import "colorswatches.less";
+
+// style guide fonts
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif|Cabin:400,500,600,700|Fira+Mono:400,700);
+
+// font mixins
+.sg-serif {
+  font-family: 'Bree Serif', serif;
+}
+
+.sg-sans-serif {
+  font-family: 'Cabin', sans-serif;
+}
+
+.sg-mono {
+  font-family: 'Fira Mono';
+}
+
+/*
+  Start of Styleguide Styles
+*/
+.serif, .sans-serif, .mono {
+  font-size: @font-size;
+}
+
+.serif {
+  font-family: @serif;
+}
+
+.sans-serif {
+  font-family: @sans-serif;
+}
+
+.mono {
+  font-family: @mono;
+}
+
+.title {
+  .sg-serif;
+}
+
+.section-title {
+  background-color: @gray--light;
+
+  h2 {
+    .sg-sans-serif;
+    padding: 15px;
+    margin: 0px;
+    color: @black;
+  }
+}
+
+.content {
+  border: 1px solid @gray--light;
+
+  &-title {
+    .sans-serif;
+  }
+}
+
+section.row {
+  margin: 10px 0px 20px;
+}

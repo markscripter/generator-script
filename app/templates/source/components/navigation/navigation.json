@@ -1,0 +1,50 @@
+{
+  "mainNav": {
+    "links": [
+      {
+        "text": "Main Link 1",
+        "href": "#",
+        "target": "_self"
+      },
+      {
+        "text": "Main Link 2",
+        "href": "#",
+        "target": "_self"
+      },
+      {
+        "text": "Main Link 3",
+        "href": "#",
+        "target": "_self"
+      },
+      {
+        "text": "Main Link 4",
+        "href": "#",
+        "target": "_self"
+      },
+      {
+        "text": "Main Link 5",
+        "href": "#",
+        "target": "_self"
+      }
+    ]
+  },
+  "utilityNav": {
+    "links": [
+      {
+        "text": "Utility Link 1",
+        "href": "#",
+        "target": "_self"
+      },
+      {
+        "text": "Utility Link 2",
+        "href": "#",
+        "target": "_self"
+      },
+      {
+        "text": "Utility Link 3",
+        "href": "#",
+        "target": "_self"
+      }
+    ]
+  }
+}

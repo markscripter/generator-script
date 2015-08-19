@@ -1,0 +1,12 @@
+{
+  "name": "<%= name %>",
+  "description": "<%= description %>",
+  "version": "<%= version %>",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "~3.10.0",
+    "normalize.css": "~3.0.3",
+    "scrollReveal.js": "~2.3.2",
+    "jquery": "~2.1.4"
+  }
+}
