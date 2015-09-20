@@ -12,7 +12,7 @@ html(lang="en")
   block links
     link(rel="shortcut icon" href="/static/misc/favicon.ico")
     link(rel="stylesheet" href="/css/styleguide.css")
- body.container
+ body.container-fluid
   block content
     header.toolbar.row
       
@@ -26,30 +26,30 @@ html(lang="en")
       hgroup.row.section-title
         h2.col-xs-12 Color Swatches
       article.content.row
-        div.col-xs-12.content-title
+        .col-xs-12.content-title
           h3 Main Colors
-        div.col-xs-12
-          div.colorSwatch.black.col-xs-3
+        .col-xs-12
+          .colorSwatch.black.col-xs-3
             p #000000 - Black
-          div.colorSwatch.white.col-xs-3
+          .colorSwatch.white.col-xs-3
             p #ffffff - White
-        div.col-xs-12.content-title
+        .col-xs-12.content-title
           h3 Gray Colors
-        div.col-xs-12
-          div.colorSwatch.lightGray.col-xs-3
+        .col-xs-12
+          .colorSwatch.lightGray.col-xs-3
             p #bfbfbf - Light Gray
-          div.colorSwatch.gray.col-xs-3
-            p #808080 - Gray
-          div.colorSwatch.darkGray.col-xs-3
-            p #404040 - Dark Gray
-        div.col-xs-12.content-title
+          .colorSwatch.gray.col-xs-3
+            p #8C8C8C - Gray
+          .colorSwatch.darkGray.col-xs-3
+            p #666666 - Dark Gray
+        .col-xs-12.content-title
           h3 Theme Colors
-        div.col-xs-12
-          div.colorSwatch.primary.col-xs-3
-            p #0000FF - Blue
-          div.colorSwatch.secondary.col-xs-3
+        .col-xs-12
+          .colorSwatch.primary.col-xs-3
+            p #00bce7 - Blue
+          .colorSwatch.secondary.col-xs-3
             p #FF0000 - Red
-          div.colorSwatch.accent.col-xs-3
+          .colorSwatch.accent.col-xs-3
             p #FFFF00 - Yellow
     
     //- Typography

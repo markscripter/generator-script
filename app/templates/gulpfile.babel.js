@@ -1,13 +1,12 @@
-/*************************
+/*
   Imports
 *************************/
 import gulp from 'gulp';
 import jade from 'gulp-jade';
+import vash  from './helpers/gulp-vash';
 import uglify from 'gulp-uglify';
-import concat from 'gulp-concat';<% if (styles === 'less') { %>
-import less from 'gulp-less';<% } else { %>
-import sass from 'gulp-sass';
-<% } %>
+import concat from 'gulp-concat';
+import less from 'gulp-less';
 import cssMinify from 'gulp-minify-css';
 import prefix from 'gulp-autoprefixer';
 import rename from 'gulp-rename';
@@ -22,17 +21,18 @@ import path from 'path';
 import glob from 'glob';
 import browserSync from 'browser-sync';
 import _ from 'lodash';
+import babel from 'gulp-babel';
 
-/*************************
+/*
   Import our config object
   so we can use our paths.
 *************************/
 const PATHS = require('./config.json').paths;
 
 function pageData(root, comps) {
-  let data = require(root);
-  let compData = glob.sync(comps, {});
-  let tempData = {};
+  const data = require(root);
+  const compData = glob.sync(comps, {});
+  const tempData = {};
 
   compData.forEach(function cb(page) {
     _.extend(tempData, require(page));
@@ -45,23 +45,32 @@ function pageData(root, comps) {
   return _.extend(tempData, data);
 }
 
-/*************************
+/*
   Build commands
 *************************/
 
 // build task
-gulp.task('build', ['jade', 'styles', 'styleguide', 'javascript', 'assets', 'svg']);
+gulp.task('build', ['styles', 'styleguide', 'javascript', 'assets', 'fonts', 'svg', 'templates']);
+
+<% if (useVash) { %>
+gulp.task('templates', ['vash']);
+<% } if (useJade) { %>
+gulp.task('templates', ['jade']);
+<% } %>
 
 // serve task
 gulp.task('serve', ['build', 'watch', 'server']);
 
 // javascript task
-gulp.task('javascript', ['js-global', 'js-components', 'js-libraries', 'js-jsdoc', 'js-maps']);
+gulp.task('javascript', ['js-global', 'js-libraries', 'js-maps']);
 
 // jade task to build out jade template to static HTML files.
 gulp.task('jade', () => {
   // get glob of pages
   glob(path.join(__dirname, PATHS.pages), {}, (err, pages) => {
+    if (err) {
+      return;
+    }
     // for each page
     pages.forEach((page) => {
       const data = pageData(path.join(__dirname, PATHS.data), path.join(__dirname, PATHS.compData));
@@ -77,19 +86,46 @@ gulp.task('jade', () => {
   return;
 });
 
+// vash task to build out jade template to static HTML files.
+gulp.task('vash', () => {
+  // get glob of pages
+  glob(path.join(__dirname, PATHS.pages), {}, (err, pages) => {
+    if (err) {
+      return;
+    }
+    // for each page
+    pages.forEach((page) => {
+      const data = require(path.join(__dirname, PATHS.data));
+      gulp.src(page, {cwd: path.join(__dirname, 'source/pages')})
+        .pipe(vash({
+          locals: data
+        }))
+        .pipe(gulp.dest(path.join(__dirname, PATHS.public)));
+    });
+  });
+
+  return;
+});
+
 // styles task to build out our LESS files into a stylesheet.
 gulp.task('styles', () => {
   const globalCSS = PATHS.cssLibraries.map((filePath) => {
     return path.join(__dirname, filePath);
   });
 
-  const cssArray = [...globalCSS, path.join(__dirname, PATHS.styles, 'main.less')];
-
+  const cssArray = [
+    ...globalCSS,
+    path.join(__dirname, PATHS.components, '**/less/*.less'),
+    path.join(__dirname, PATHS.styles, 'main.less'),
+  ];
   return gulp.src(cssArray)
-    .pipe(less())
+    .pipe(concat('stylesheet.less'))
+    .pipe(less({
+      paths: [path.join(__dirname, PATHS.styles)],
+    }))
     .pipe(concat('stylesheet.css'))
     .pipe(prefix({
-      browsers: ['last 2 versions'],
+      browsers: ['last 4 versions'],
       cascade: 'false',
     }))
     .pipe(gulp.dest(path.join(__dirname, PATHS.public, 'css/')))
@@ -102,9 +138,16 @@ gulp.task('styles', () => {
 gulp.task('styleguide', () => {
   // build pages
   gulp.src(path.join(__dirname, PATHS.styleguide.pages))
+    <% if (useJade) {%>
     .pipe(jade({
       pretty: true,
     }))
+    <% } %>
+    <% if (useVash) {%>
+    .pipe(vash({
+      locals : {}
+    }))
+    <% } %>
     .pipe(gulp.dest(path.join(__dirname, PATHS.public)));
 
   // build styles
@@ -119,8 +162,12 @@ gulp.task('styleguide', () => {
 // js-global task to combine our JS files
 gulp.task('js-global', () => {
   const combined = combiner.obj([
-    gulp.src(path.join(__dirname, PATHS.javascript, '*.js')),
+    gulp.src([
+      path.join(__dirname, PATHS.javascript, '*.js'),
+      path.join(__dirname, PATHS.components, '**/javascript/*.js'),
+    ]),
     eslint(),
+    babel(),
     wrapper({
       header: '\n/* \n ${filename} \n */ \n',
       footer: '\n/* \n END ${filename} \n */ \n',
@@ -160,29 +207,6 @@ gulp.task('js-libraries', () => {
   return combined;
 });
 
-// js-components task
-gulp.task('js-components', () => {
-  const combined = combiner.obj([
-    gulp.src(path.join(__dirname, PATHS.components, '**/javascript/*.js')),
-    eslint(),
-    wrapper({
-      header: '/* \n ${filename} \n */ \n',
-      footer: '/* \n END ${filename} \n */ \n',
-    }),
-    sourcemaps.init(),
-    concat('main.js'),
-    gulp.dest(path.join(__dirname, PATHS.public, 'js/')),
-    uglify({
-      mangle: false,
-      compress: true,
-    }),
-    rename('main.min.js'),
-    gulp.dest(path.join(__dirname, PATHS.public, 'js/')),
-  ]);
-
-  return combined;
-});
-
 // js-jsdoc task
 gulp.task('js-jsdoc', () => {
   return gulp.src(path.join(__dirname, PATHS.components, '**/javascript/*.js'))
@@ -213,7 +237,9 @@ gulp.task('svg', () => {
   return gulp.src(path.join(__dirname, PATHS.svg, '**.svg'))
     .pipe(svgmin())
     .pipe(svgstore())
-    .pipe(gulp.dest(path.join(__dirname, PATHS.public, 'assets/')));
+    .pipe(gulp.dest(path.join(__dirname, PATHS.public, 'svg/')))
+    .pipe(rename('svg.min.jade'))
+    .pipe(gulp.dest(path.join(__dirname, PATHS.svg)));
 });
 
 // assets task
@@ -222,8 +248,24 @@ gulp.task('assets', () => {
     .pipe(gulp.dest(path.join(__dirname, PATHS.public, 'assets')));
 });
 
+// font task
+gulp.task('fonts', () => {
+  const combined = combiner.obj([
+    gulp.src([
+      path.join(__dirname, PATHS.fonts),
+      path.join(__dirname, PATHS.fontAwesome, 'fonts/*.*'),
+    ]),
+    gulp.dest(path.join(__dirname, PATHS.public, 'css/fonts/')),
+  ]);
+
+  return combined;
+});
+
 // watch
 gulp.task('watch', () => {
+  gulp.watch([
+    path.join(__dirname, PATHS.assets),
+  ], ['assets']).on('change', browserSync.reload);
   gulp.watch([
     path.join(__dirname, PATHS.styles, '**.less'),
     path.join(__dirname, PATHS.styles, '**/**.less'),
@@ -232,7 +274,8 @@ gulp.task('watch', () => {
   gulp.watch([
     path.join(__dirname, PATHS.pages),
     path.join(__dirname, '/pages/**/*.jade'),
-    path.join(__dirname, PATHS.components + '**/markup/**.jade'),
+    path.join(__dirname, PATHS.components, '/**/markup/**.jade'),
+    path.join(__dirname, PATHS.partials),
     path.join(__dirname, PATHS.compData),
     path.join(__dirname, PATHS.data),
   ], ['jade']).on('change', browserSync.reload);
@@ -240,4 +283,11 @@ gulp.task('watch', () => {
     path.join(__dirname, PATHS.styleguide.styles),
     path.join(__dirname, PATHS.styleguide.pages),
   ], ['styleguide']).on('change', browserSync.reload);
+  gulp.watch([
+    path.join(__dirname, PATHS.javascript, '*.js'),
+    path.join(__dirname, PATHS.components, '**/javascript/*.js'),
+  ], ['javascript']).on('change', browserSync.reload);
+  gulp.watch([
+    path.join(__dirname, PATHS.svg, '*.svg'),
+  ], ['svg', 'jade']).on('change', browserSync.reload);
 });

@@ -1,0 +1,33 @@
+// Data structure for 'data' in which: itemFigure(data)
+//  data = {
+//    image : {
+//      alt : 'alt example',
+//      src : 'source example',
+//      title : 'title example',
+//    },
+//    imageCaption : 'caption text',
+//    link : {
+//      href : '#',
+//      target : '_self',
+//      text : 'Example Text'
+//    },
+//    paragraph : "Main Content text."
+//  }
+mixin itemFigure(data)
+  .item.item-figure
+    figure.item-image
+      if data.link
+        a(href="#{data.link.href}" target="#{data.link.target}")
+          if data.image
+            img(src="#{data.image.src}" alt="#{data.image.alt}" title="#{data.image.title}")
+      else
+        if data.image
+          img(src="#{data.image.src}" alt="#{data.image.alt}" title="#{data.image.title}")
+      if data.imageCaption
+        figcaption.item-image--caption #{data.imageCaption}
+    if (data.link && data.paragraph)
+      .item-text
+        if data.link
+          a.item-link(href="#{data.link.href}" target="#{data.link.target}") #{data.link.text}
+        if data.paragraph
+          p.item-paragraph #{data.paragraph}

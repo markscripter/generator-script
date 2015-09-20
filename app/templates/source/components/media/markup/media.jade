@@ -1,0 +1,50 @@
+include ../../icon/markup/icon.jade
+
+//  data = {
+//    "media" : {
+//      "picture" : {
+//        "small" : {
+//           "url" : "/assets/carousel-hero-two--small.png"
+//        },
+//        "large" : {
+//          "url" : "/assets/carousel-hero-two--large.png"
+//        }
+//      },
+//      "video" : {
+//        "thumbnails" : {
+//          "small" : {
+//            "url" : "/assets/carousel-hero-two--small.png"
+//          },
+//          "large" : {
+//            "url" : "/assets/carousel-hero-two--large.png"
+//          }
+//        }
+//      }
+//    }
+//  }
+mixin media(data)
+  if (data.media.picture)
+    figure
+      picture
+        <!--[if IE 9]><video style="display: none;"><![endif]-->
+        if (data.media.picture.large)
+          source(srcset="#{data.media.picture.large.url}" media="(min-width: 480px)")
+        if (data.media.picture.small)
+          source(srcset="#{data.media.picture.small.url}" media="(min-width: 0px)")
+          <!--[if IE 9]></video><![endif]-->
+          img(srcset="#{data.media.picture.small.url}" alt="#{data.alt}" title="#{data.title}")
+          if block
+            block
+  if (data.media.video)
+    figure.video-thumbnail(data-handler="video-modal" data-settings="{}")
+      picture
+        <!--[if IE 9]><video style="display: none;"><![endif]-->
+        if (data.media.video.thumbnails.large)
+          source(srcset="#{data.media.video.thumbnails.large.url}" media="(min-width: 480px)")
+        if (data.media.video.thumbnails.small)
+          source(srcset="#{data.media.video.thumbnails.small.url}" media="(min-width: 0px)")
+          <!--[if IE 9]></video><![endif]-->
+          img(srcset="#{data.media.video.thumbnails.small.url}" alt="#{data.alt}" title="#{data.title}")
+      +icon("play")
+  if (data.media.image)
+    img(srcset="#{data.media.image.small.url}" alt="#{data.alt}" title="#{data.title}")

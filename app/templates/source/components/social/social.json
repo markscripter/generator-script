@@ -1,0 +1,9 @@
+{
+  "outlet": "facebook",
+  "iconClass": "fa-facebook",
+  "link" : {
+    "href" : "#",
+    "target": "_blank",
+    "text": "Facebook"
+  }
+}

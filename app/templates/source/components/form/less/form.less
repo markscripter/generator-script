@@ -1,0 +1,128 @@
+/*****************
+  Form Elements
+******************/
+
+// unstyled items so far
+datalist {}
+fieldset {}
+keygen {}
+legend {}
+meter {}
+optgroup {}
+option {}
+output {}
+progress {}
+textarea {}
+
+// styled items
+button{
+  background-color: @bkg-blue;
+  border:none;
+  box-sizing:border-box;
+  color:@white;
+  font-family:@sans-serif;
+  font-size: @h5-size;
+  padding: 13px 0px;
+  text-transform: uppercase;
+  width:100%;
+  outline: none;
+}
+
+form {
+  .error-message {
+    display: none;
+  }
+
+  .error {
+    color:@error !important;
+
+    & + .error-message {
+      color:@error !important;
+      display: block;
+      font-family: @sans-serif;
+      padding: 0px 5%;
+      margin: 10px 0px;
+    }
+  }
+}
+
+.form {
+  &-wrapper {
+    padding: 0px 5%;
+    .centered;
+    box-sizing: border-box;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    @media @mq-md {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+
+      @media @mq-sm {
+        display: inline-block;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+input {
+  box-sizing:border-box;
+  color:@gray--medium;
+  display: block;
+  margin: 15px auto;
+  padding: 0px 10px;
+  font-family:@sans-serif;
+  font-size:@font-size;
+  width:100%;
+  -webkit-appearance: none;
+  border:none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &[type="button"] {}
+  &[type="checkbox"] {}
+  &[type="color"] {}
+  &[type="date"] {}
+  &[type="datetime"] {}
+  &[type="date-time-local"] {}
+  &[type="email"] {}
+  &[type="file"] {}
+  &[type="hidden"] {}
+  &[type="image"] {}
+  &[type="month"] {}
+  &[type="number"] {}
+  &[type="password"] {}
+  &[type="radio"] {}
+  &[type="range"] {}
+  &[type="reset"] {}
+  &[type="search"] {}
+  &[type="submit"] {}
+  &[type="tel"] {}
+  &[type="text"] {}
+  &[type="time"] {}
+  &[type="url"] {}
+  &[type="week"] {}
+}
+label {
+  font-family:@sans-serif;
+  font-size:@font-size--small;
+  color: @gray--darker;
+  box-sizing: border-box;
+}
+
+select {
+  margin: 0 10px;
+}

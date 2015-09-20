@@ -1,0 +1,49 @@
+/*****************
+  Multimedia Elements
+******************/
+
+area {}
+audio {}
+img {}
+map {}
+track {}
+video {}
+.video-thumbnail {
+  display: block;
+  cursor:pointer;
+  position: relative;
+
+  & + p,
+  & ~ a {
+    text-align: center;
+    display: block;
+  }
+
+  & ~ a {
+    font-family:@sans-serif--light;
+    font-size: ceil((@font-size * 1.1));
+    text-decoration: none;
+    color:@primary-light;
+    margin-bottom:70px;
+  }
+}
+
+/********************
+  Instances
+********************/
+.hero {
+  margin: 0px auto;
+  display: block;
+  width: 100%;
+  max-width: @screen-lg;
+
+  figure {
+    margin: 0px;
+  }
+
+  picture {
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "heroCarousel" : [
+    {
+      "alt" : "Alt Text",
+      "title" : "Title Text",
+      "text" : "Hearing Brings Joy",
+      "link" : {
+        "href" : "#",
+        "target" : "_self",
+        "text" : "Find out how"
+      },
+      "media" : {
+        "small" : {
+          "url" : "/assets/carousel-hero--small.png"
+        },
+        "large" : {
+          "url" : "/assets/carousel-hero--large.png"
+        }
+      }
+    }
+  ]
+}

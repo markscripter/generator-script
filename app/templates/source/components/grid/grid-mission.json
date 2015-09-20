@@ -1,0 +1,25 @@
+{
+  "items" : [
+    {
+      "alt" : "Alt Text",
+      "title" : "Title Text",
+      "size" : 2,
+      "link" : {
+        "href" : "#",
+        "target" : "_self",
+        "text" : {
+          "front" : "Mission Name",
+          "back" : "Learn More"
+        }
+      },
+      "media" : {
+        "small" : {
+          "url" : ""
+        },
+        "large" : {
+          "url" : ""
+        }
+      }
+    }
+  ]
+}

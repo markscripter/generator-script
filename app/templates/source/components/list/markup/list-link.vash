@@ -1,0 +1,26 @@
+@********************
+  Component: list-link
+
+  Data Structure: Array of Link Objects
+  EX: @model = [
+    {
+      "text" : "Link Text",
+      "link" : {
+        "href" : "#",
+        "target" : "_blank"
+      }
+    }
+  ]
+*********************@
+
+@if(model) {
+  @if(model.items){
+    <ul class="list list-link">
+      @model.items.forEach(function(item){
+        <li>
+          <a href="@item.link.href" target="@item.link.target">@item.text</a>
+        </li>
+      })
+    </ul>
+  }
+}

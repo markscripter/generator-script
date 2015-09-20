@@ -1,0 +1,58 @@
+// data = {
+//   type: 'text' || 'email' || 'checkbox' || 'select' || '...',
+//   name: 'unique name',
+//   labelText: 'Text for label'
+//   pattern : REGEX_EXP,
+//   options: [
+//     {
+//       value : '',
+//       text : ''
+//     }    
+//   ]
+//
+//
+//
+//
+// }
+mixin form(data)
+  each item in data
+    if (item.labelText)
+      label(for="#{item.name}") #{item.labelText}
+      
+    //= Conditional check for all possible type
+    if(item.type === 'text')
+      input(type="#{item.type}" id="#{item.name}" pattern="#{item.pattern}")
+    
+    if(item.type === 'select')
+      select(name="#{item.name}")
+        // array of options
+        each option in item.options
+          option(value="#{option.value}") #{option.text}
+    
+    if(item.type === 'button')
+      button(type="submit" name="${item.name}" value="${item.value}")
+    
+    if(item.type === 'checkbox')
+    if(item.type === 'color')
+    if(item.type === 'date')
+    if(item.type === 'datetime')
+    if(item.type === 'email')
+    if(item.type === 'file')
+    if(item.type === 'hidden')
+    if(item.type === 'image')
+    if(item.type === 'month')
+    if(item.type === 'number')
+    if(item.type === 'password')
+    if(item.type === 'radio')
+    if(item.type === 'range')
+    if(item.type === 'reset')
+    if(item.type === 'search')
+    if(item.type === 'submit')
+    if(item.type === 'tel')
+    if(item.type === 'text')
+    if(item.type === 'time')
+    if(item.type === 'url')
+    if(item.type === 'week')
+    if(item.type === 'textarea')
+    if(item.type === 'button')
+    if(item.type === 'checkbox')

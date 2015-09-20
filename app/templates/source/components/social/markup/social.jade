@@ -1,0 +1,8 @@
+mixin social(data)
+  section.social-icons
+    each item in data
+      a(href="#{item.link.href}" target="#{item.link.target}")
+        if (item.iconClass)
+          i.fa(class="#{item.iconClass}")
+        if (item.link.text)
+          span.icon-text #{item.link.text}

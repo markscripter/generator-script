@@ -1,0 +1,9 @@
+@*********************
+  Partial: header
+*********************@
+<header>
+  <h1>header</h1>
+  <nav>
+    @html.include('components/list/markup/list-link', model.mainNav)
+  </nav>
+</header>

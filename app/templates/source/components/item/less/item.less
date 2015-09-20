@@ -1,0 +1,147 @@
+.item {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  @media @mq-xs {
+    float:left;
+    display: inline-block;
+    box-sizing:border-box;
+  }
+
+  // Base Item Styles
+  &-wrapper {
+    padding: 0 5%;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+
+    @media @mq-lg {
+      padding: 30px 5%;
+      box-sizing: border-box;
+      max-width:@screen-lg;
+      margin: 0 auto;
+    }
+  }
+
+  &-figure {
+    width: auto;
+  }
+
+  &-image {
+    margin: 0px 10px;
+
+    @media all and (max-width:@screen-sm){
+      img {
+        max-width: 120px;
+      }
+    }
+  }
+
+  &-image--caption {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+
+  &-text {
+    font-size: @font-size;
+    margin-top: 23px;
+  }
+
+  &-link {
+    font-family: @sans-serif;
+    color: @primary;
+    .centered;
+    text-decoration: none;
+    text-transform: uppercase;
+
+  }
+
+  &-paragraph {
+    .centered;
+    font-family: @sans-serif--light;
+    color:@gray--darker;
+  }
+
+  &-vertical {
+    .alignCenter;
+  }
+
+  // Custom Item Styles
+  &-stats-block {
+
+    @media @mq-xs {
+      float:left;
+      width: 50%;
+      padding-left: 2.5%;
+      padding-right: 2.5%;
+    }
+
+    @media @mq-md {
+      float:left;
+      width: 25%;
+      padding: 0 1.5%;
+    }
+
+    .item-container p {
+      margin: 0px;
+      color:@white;
+      line-height: 1em;
+    }
+    svg {
+      width: 53px;
+      height: 33px;
+      fill:@white;
+    }
+    i {
+      color:@white;
+      font-size: 38px;
+    }
+
+    .icon {
+      margin-top: 10px;
+    }
+
+    &--circle {
+      border-radius: 50%;
+      margin: 0 auto;
+      width: 185px;
+      height: 185px;
+      .centered;
+    }
+
+    .top {
+      font-family: JubilatMedium, @serif;
+      font-size: 56px;
+    }
+    .bottom {
+      font-family: @sans-serif;
+      font-size: 22px;
+      text-transform: uppercase;
+    }
+
+    &:nth-child(1) {
+      .item-stats-block--circle {
+        background-color:@primary;
+      }
+    }
+    &:nth-child(2) {
+      .item-stats-block--circle {
+        background-color:#147389;
+      }
+    }
+    &:nth-child(3) {
+      .item-stats-block--circle {
+        background-color:#68737b;
+      }
+    }
+    &:nth-child(4) {
+      .item-stats-block--circle {
+        background-color:#268cd0;
+      }
+    }
+  }
+}

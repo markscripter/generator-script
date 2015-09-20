@@ -1,0 +1,15 @@
+//  data = {
+//    "info" : "info text",
+//    "categories" : [
+//      "Text",
+//      "Text"
+//    ]
+//  }
+
+mixin meta(data)
+  p
+    span.info #{data.info}
+    if(data.categories)
+      span.categories 
+        each category in data.categories
+          span #{category}

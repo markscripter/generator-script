@@ -1,0 +1,26 @@
+include ../../social/markup/social.jade
+include ../../chevron/markup/double-chevron.jade
+
+//  data = {
+//    "message" : "Text",
+//    "social" : [
+//      {
+//        "outlet": "facebook",
+//        "iconClass": "fa-facebook",
+//        "link" : {
+//          "href" : "#",
+//          "target": "_blank",
+//          "text": "Share"
+//        }
+//      }
+//    ]
+//  }
+
+mixin calloutSpread(data)
+  section.callout.spread
+    section
+      if (data.message) 
+        p #{data.message}
+      if (data.social)
+        +social(data.social)
+    

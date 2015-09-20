@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "text": "Link 1",
+      "link": {
+        "href": "#",
+        "target": "_self"
+      }
+    },
+    {
+      "text": "Link 2",
+      "link": {
+        "href": "#",
+        "target": "_self"
+      }
+    },
+    {
+      "text": "Link 3",
+      "link": {
+        "href": "#",
+        "target": "_self"
+      }
+    },
+    {
+      "text": "Link 4",
+      "link": {
+        "href": "#",
+        "target": "_self"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+include ../../chevron/markup/double-chevron.jade
+
+mixin gridMission(data)
+  .grid.container
+    .row
+      each item in data
+        if item.size === 1
+          .grid-item.col-xs-12.col-sm-6.col-md-4
+            a.grid-item--link(href="#{item.link.href}" target="#{item.link.target}")
+              figure.grid-item--image
+                picture
+                  <!--[if IE 9]><video style="display: none;"><![endif]-->
+                  source(srcset="#{item.media.small.url}" media="(min-width: 0px)")
+                  <!--[if IE 9]></video><![endif]-->
+                  img(srcset="#{item.media.small.url}" alt="#{item.alt}" title="#{item.title}")
+                .flip-card
+                  .flip-card--wrapper
+                    figcaption.grid-item--text.front #{item.link.text.front} 
+                      +doubleChevron()
+                    figcaption.grid-item--text.back #{item.link.text.back} 
+                      +doubleChevron()
+        if item.size === 2
+          .grid-item.col-xs-12.col-sm-6.col-md-8
+            a.grid-item--link(href="#{item.link.href}" target="#{item.link.target}")
+              figure.grid-item--image
+                picture
+                  <!--[if IE 9]><video style="display: none;"><![endif]-->
+                  source(srcset="#{item.media.large.url}" media="(min-width: 992px)")
+                  source(srcset="#{item.media.small.url}" media="(min-width: 0px)")
+                  <!--[if IE 9]></video><![endif]-->
+                  img(srcset="#{item.media.small.url}" alt="#{item.alt}" title="#{item.title}")
+                .flip-card
+                  .flip-card--wrapper  
+                      figcaption.grid-item--text.front #{item.link.text.front} 
+                        +doubleChevron()
+                      figcaption.grid-item--text.back #{item.link.text.back} 
+                        +doubleChevron()

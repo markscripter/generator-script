@@ -1,9 +1,37 @@
-extend layouts/_layout.jade
-
-append meta
-
-append links
-
-append content
-
-append scripts
+doctype html
+html(lang="en")
+ head
+  title= Project Library
+  
+  block meta
+    meta(charset="utf-8")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(type="text/css" rel="stylesheet" media="all" href="/css/stylesheet.min.css")
+    
+ body
+  article
+    figure(class="logo")
+      a(href="/")
+        img(src="/assets/logo.png" alt="Project Logo Alt" title="Progect Logo Title")
+    h1 Project Title
+    nav 
+      ul
+        li APPROVED
+          ul
+            li
+              a(href="#" target="_blank") Approved Page
+        li COMPLETED PAGES
+          ul
+            li
+              a(href="#" target="_blank") Completed, Pending Approval Page
+        li NOT COMPLETED PAGES
+          ul            
+            li
+              a(href="#" target="_blank") Not completed, working on Page
+        li NOT STARTED
+          ul
+            li 
+              a(href="#" target="_blank") Not Started Page
+        li 
+          a(href="#" target="_blank") STYLE GUIDE - <i>In Progress</i>

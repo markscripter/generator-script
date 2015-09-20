@@ -1,0 +1,51 @@
+.social {
+  &-icons {
+    display: block;
+    .centered;
+    width: 100%;
+
+    a {
+
+      display: inline-block;
+      color:@white;
+      text-decoration:none;
+      font-size:30px;
+      margin: 15px 6px 0px;
+
+      @media @mq-md {
+        margin-top: 0px;
+
+        &:first-child {
+          margin-left: 0px;
+        }
+
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+    }
+
+    i {
+      padding: 15px 15px;
+      background-color:@gray--light;
+      height: 30px;
+      width:30px;
+      border-radius: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .icon-text {
+      font-family: @sans-serif;
+      font-size: ceil((@font-size * 1.1)); // 18px
+      color: @gray;
+      text-transform: uppercase;
+    }
+
+    @media @mq-md {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
+}

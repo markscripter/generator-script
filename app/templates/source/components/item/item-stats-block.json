@@ -1,0 +1,14 @@
+{
+  "itemStatsBlock" : {
+    "icon" : {
+      "type" : "svg",
+      "def" : "#def-link"
+    },
+    "link" : {
+      "href" : "#",
+      "target" : "_self",
+      "text" : "Example Text"
+    },
+    "paragraph" : "Main Content text."
+  }
+}

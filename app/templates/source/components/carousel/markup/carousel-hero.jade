@@ -1,0 +1,68 @@
+include ../../chevron/markup/double-chevron.jade
+include ../../media/markup/media.jade
+
+//- data = {
+//-   "slickSettings" : {
+//-     "slidesToShow" : 1,
+//-     "slidesToScroll" : 1,
+//-     "dots" : false,
+//-     "infinite" : true,
+//-     "prevArrow" : ".arrows-prev",
+//-     "nextArrow" : ".arrows-next"
+//-   },
+//-   "slides" : [
+//-     {
+//-       "alt" : "Alt Text",
+//-       "title" : "Title Text",
+//-       "text" : "Hearing Brings Joy",
+//-       "link" : {
+//-         "href" : "#",
+//-         "target" : "_self",
+//-         "text" : "Find out how"
+//-       },
+//-       "media" : {
+//-         "picture" : {
+//-           "small" : {
+//-             "url" : "/assets/carousel-hero-two--small.png"
+//-           },
+//-           "large" : {
+//-             "url" : "/assets/carousel-hero-two--large.png"
+//-           }
+//-         }
+//-       }
+//-     }
+//-   ]
+//- }
+
+mixin carouselHero(data)
+  <!-- Carousel -->
+  .carousel-wrapper
+    <!-- Carousel: Hero -->
+    .carousel(data-slick='#{data.slickSettings}')
+      each item in data.slides
+        .carousel-slide
+          <!-- Slide: inner content -->
+          +media(item)
+            if (item.text)
+              figcaption.carousel-figure--caption
+                span.carousel-figure--caption-text #{item.text}
+                if (item.link)
+                  a.carousel-figure--link(href="#{item.link.href}" target="#{item.link.target}") #{item.link.text} 
+                    +doubleChevron()
+          <!-- /Slide: inner content -->
+    <!-- /Carousel: Hero -->
+    <!-- Item Count -->
+    if (data.slickSettings.showCount)
+      .item-count
+        span.current
+        span.seperator /
+        span.total
+    <!-- /Item Count -->
+    <!-- Arrows -->
+    .arrows
+      a.arrows-prev
+        i.fa.fa-chevron-left
+      a.arrows-next
+        i.fa.fa-chevron-right
+    <!-- /Arrows -->
+  <!-- /Carousel -->

@@ -1,0 +1,3 @@
+((window, $) => {
+  return $;
+})(window, jQuery);

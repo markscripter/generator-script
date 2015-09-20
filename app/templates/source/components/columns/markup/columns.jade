@@ -1,0 +1,15 @@
+//  data = [
+//    {
+//      "name" : "person name",
+//      "title" : "job title"
+//    }
+//  ]
+mixin columns(data, options)
+  if(data)
+    - var opts = (options) ? options : {}
+    section.columns.clearfix(data-enhancer="columns" data-settings=opts)
+      each item in data
+        div.columns-item
+          p 
+            strong #{item.name}
+          p #{item.title}

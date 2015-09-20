@@ -1,13 +1,51 @@
-include ../../components/link-list/markup/link-list.jade
+include ../../components/list/markup/link-list.jade
+include ../../components/icon/markup/icon.jade
 
-header.container
-  div(class="row")
-    div(class="logo")
+header.sticky-header(data-handler="scroll")
+  .container
+    figure(class="logo")
       a(href="/")
         img(src="/assets/logo.png" alt="Starkey Logo" title="Starkey Logo")
-    if(utilityNav)
-      nav(id="utility-nav" class="navigation clearfix")
-        +linkList(utilityNav.links)
     if(mainNav)
-      nav(id="main-nav" class="navigation")
-        +linkList(mainNav.links)
+      .navigation
+        .icon(data-handler="toggleActive")
+          +icon("menu")
+        nav(id="main-nav") 
+          ul.mobile
+            +linkList(mainNav.links)
+            li
+              i.fa.fa-video-camera
+              a(href="#" target="_self") Videos
+            li
+              i.fa.fa-pencil
+              a(href="#" target="_self") Blog
+            li
+              i.fa.fa-calendar
+              a(href="#" target="_self") News &amp; Events
+          ul.desktop
+            +linkList(mainNav.links)
+        nav(id="utility-nav")
+          ul.mobile 
+            li
+              a(href="#" target="_self")
+                svg.icon-donate(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+                  use(xlink:href="#donate")
+                span Donate
+          ul.desktop
+            li
+              a(href="#" target="_self") 
+                i.fa.fa-video-camera
+                span Videos
+            li
+              a(href="#" target="_self") 
+                i.fa.fa-calendar
+                span News
+            li
+              a(href="#" target="_self") 
+                i.fa.fa-pencil
+                span Blog
+            li
+              a(href="#" target="_self")
+                svg.icon-donate(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+                  use(xlink:href="#donate")
+                span Donate

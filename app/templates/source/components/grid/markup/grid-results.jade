@@ -1,0 +1,30 @@
+include ../../chevron/markup/double-chevron.jade
+include ../../meta/markup/meta.jade
+include ../../icon/markup/icon.jade
+
+mixin gridResults(data)
+  .grid.container
+    .row
+      each item in data
+        .grid-item.col-xs-12.col-sm-6.col-md-4
+          if (item.media.picture)
+            a.grid-item--link(href="#{item.link.href}" target="#{item.link.target}")
+              figure.grid-item--image
+                picture
+                  <!--[if IE 9]><video style="display: none;"><![endif]-->
+                  source(srcset="#{item.media.picture.thumbnails.small.url}" media="(min-width: 0px)")
+                  <!--[if IE 9]></video><![endif]-->
+                  img(srcset="#{item.media.picture.thumbnails.small.url}" alt="#{item.alt}" title="#{item.title}")
+          if (item.media.video)
+            a.grid-item--link(href="#{item.link.href}" target="#{item.link.target}")
+              figure.grid-item--image.video-thumbnail(data-handler="video-modal" data-settings="{}")
+                picture
+                  <!--[if IE 9]><video style="display: none;"><![endif]-->
+                  source(srcset="#{item.media.video.thumbnails.small.url}" media="(min-width: 0px)")
+                  <!--[if IE 9]></video><![endif]-->
+                  img(srcset="#{item.media.video.thumbnails.small.url}" alt="#{item.alt}" title="#{item.title}")
+                +icon("play")
+          .grid-item--content
+            +meta(item)
+            a.grid-item--link(href="#{item.link.href}" target="#{item.link.target}") #{item.link.text} 
+              +doubleChevron()

@@ -1,27 +1,45 @@
 {
   "paths": {
+    "assets" : "/source/assets/**.*",
     "compData" : "/source/components/**/**.json",
     "components": "/source/components/",
     "cssLibraries": [
-      "/bower_components/normalize.css/normalize.css"
+      "/bower_components/normalize.css/normalize.css",
+      "/bower_components/slick-carousel/slick/slick.css"
     ],
-    "data" : "/source/pages/siteData.json",
+    "data" : "/source/siteData.json",
+    "fonts" : "/source/styles/global/fonts/*.*",
+    "fontAwesome": "/bower_components/fontawesome/",
     "javascript": "/source/javascript/",
     "jsLibraries" : [
       "/bower_components/lodash/lodash.min.js",
       "/bower_components/scrollReveal.js/dist/scrollReveal.min.js",
-      "/bower_components/jquery/dist/jquery.min.js"
+      "/bower_components/jquery/dist/jquery.min.js",
+      "/bower_components/picturefill/dist/picturefill.min.js",
+      "/bower_components/slick-carousel/slick/slick.min.js",
+      "/bower_components/modernizr/modernizr.js"
     ],
     "jsMaps" : [
       "/bower_components/jquery/dist/jquery.min.map"
     ],
     "logs": "/logs/",
+    <% if (useJade) {%>
     "pages": "/source/pages/**.jade",
+    "partials": "/source/pages/**/*.jade",
+    <% } %>
+    <% if (useVash) {%>
+    "pages": "/source/pages/**.vash",
+    "partials": "/source/pages/**/*.vash",
+    <% } %>
     "public": "/public/",
-    "routes": "/source/_routes.js",
     "styleguide": {
       "styles": "/source/styles/styleguide/styleguide.less",
+      <% if (useJade) {%>
       "pages": "/source/pages/styleguide.jade"
+      <% } %>
+      <% if (useVash) {%>
+      "pages": "/source/pages/styleguide.vash"
+      <% } %>
     },
     "styles": "/source/styles/",
     "svg": "/source/svg/"

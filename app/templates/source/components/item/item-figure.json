@@ -1,0 +1,16 @@
+{
+  "itemFigure" : {
+    "image" : {
+      "alt" : "alt example",
+      "src" : "source example",
+      "title" : "title example"
+    },
+    "imageCaption" : "caption text",
+    "link" : {
+      "href" : "#",
+      "target" : "_self",
+      "text" : "Example Text"
+    },
+    "paragraph" : "Main Content text."
+  }
+}

@@ -1,0 +1,36 @@
+include ../../social/markup/social.jade
+include ../../chevron/markup/double-chevron.jade
+
+//  data = {
+//    "message" : "Text",
+//    "button" : {
+//      "text" : "BTN Text",
+//      "link" : {
+//        "href" : "#",
+//        "target" : "_self"
+//      }
+//    },
+//    "social" : [
+//      {
+//        "outlet": "facebook",
+//        "iconClass": "fa-facebook",
+//        "link" : {
+//          "href" : "#",
+//          "target": "_blank",
+//          "text": "Share"
+//        }
+//      }
+//    ]
+//  }
+
+mixin calloutSocial(data)
+  section.callout.social
+    section
+      if (data.message) 
+        p #{data.message}
+      if (data.button) 
+        a.btn <span>#{data.button.text} 
+          +doubleChevron()</span>
+    if (data.social)
+      +social(data.social)
+    

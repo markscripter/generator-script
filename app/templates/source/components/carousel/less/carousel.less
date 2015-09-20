@@ -1,0 +1,133 @@
+.carousel {
+  max-width: none;
+
+  // Base Carousel Styles
+  figure {
+    margin: 0px;
+    max-height: 450px;
+    overflow: hidden;
+
+    @media @mq-md {
+      max-height: 525px;
+    }
+
+    picture {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  &-slide {
+    position: relative;
+  }
+
+  &-figure {
+    &--caption {
+      position: absolute;
+      left: 0%;
+      right: 0%;
+      bottom: 20px;
+
+      &-text {
+        padding-top: 10px;
+        background: rgba(255, 255, 255, 0.65);
+        display: block;
+        color:@gray--darker;
+        text-transform: uppercase;
+        font-family: @sans-serif--light;
+        font-size: ceil((@font-size * 2.2)); // 36px
+        .centered;
+
+        @media @mq-md {
+          font-size: 60px;
+        }
+      }
+    }
+    &--link {
+      display: block;
+      text-decoration: none;
+      color:@white;
+      text-transform: uppercase;
+      font-size: @font-size;
+      line-height: 1em;
+      margin-top: 20px;
+      .textDropShadow;
+      .centered;
+    }
+  }
+
+  &-multiple {
+    .grid-item--image {
+      max-width: 320px;
+      margin: 0 auto;
+      position: relative;
+
+      @media @mq-md {
+        max-width: inherit;
+        max-height: 345px
+      }
+    }
+
+    .grid-item--link {
+      @media @mq-xs {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    .item-count {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color:@white;
+      font-family:@sans-serif--bold;
+      font-size: ceil((@font-size * 1.1));
+    }
+
+    .arrows {
+      position: absolute;
+      width: 100%;
+      top: ~"calc(50% - 35px)";
+
+      a {
+        color:@white;
+        opacity: 0.4;
+        font-size: 60px;
+        .textDropShadow;
+        cursor: pointer;
+
+        &:active {
+          opacity: 1;
+        }
+
+        @media @mq-md {
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+
+      &-prev {
+        float:left;
+        margin-left: 2.5%;
+      }
+
+      &-next {
+        float:right;
+        margin-right: 2.5%;
+      }
+    }
+  }
+}

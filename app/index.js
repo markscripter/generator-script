@@ -38,6 +38,16 @@ module.exports = generators.Base.extend({
           'sass'
         ],
         message: 'Choose your CSS preprocessor:',
+      },
+      {
+        type: 'list',
+        name: 'templateLang',
+        default: 'vash',
+        choices: [
+          'vash',
+          'jade'
+        ],
+        message: 'Choose your HTML Templating Language:',
       }
     ];
 
@@ -46,12 +56,17 @@ module.exports = generators.Base.extend({
       this.appDescription = answers.appDescription;
       this.appVersion = answers.appVersion;
       this.cssStyleChoosen = answers.cssStyle;
+      this.useVash = (answers.templateLang === 'vash') ? true : false;
+      this.useJade = (answers.templateLang === 'jade') ? true : false;
       done();
     }.bind(this));
   },
   writing: {
     sourceDir: function(){
       this.directory('source', '');
+    },
+    helpers: function(){
+      this.directory('helpers', '');
     },
     packageJSON: function(){
       this.fs.copyTpl(
@@ -97,7 +112,10 @@ module.exports = generators.Base.extend({
     config: function(){
       this.fs.copyTpl(
         this.templatePath('config.json'),
-        this.destinationPath('config.json')
+        this.destinationPath('config.json'),{
+          useJade: this.useJade,
+          useVash: this.useVash
+        }
       );
     },
     readme: function(){
@@ -114,7 +132,9 @@ module.exports = generators.Base.extend({
         this.templatePath('gulpfile.babel.js'),
         this.destinationPath('gulpfile.babel.js'),
         {
-          styles: this.cssStyleChoosen
+          styles: this.cssStyleChoosen,
+          useJade: this.useJade,
+          useVash: this.useVash
         }
       );
     },

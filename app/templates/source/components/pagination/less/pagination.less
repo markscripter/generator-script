@@ -1,0 +1,26 @@
+.pagination {
+  .centered;
+  margin: 20px 0px 40px;
+
+  a {
+    font-family: @sans-serif--light;
+    font-size: ceil((@font-size * 1.1)); // 18px
+    color: @gray--dark;
+    text-decoration: none;
+    border-left: 1px solid @gray--dark;
+    padding: 8px 14px;
+  }
+
+  .current {
+    color:@primary-dark;
+  }
+
+  .prev,
+  .next{
+    border-left: 0px;
+
+    & + .page {
+      border-left: 0px;
+    }
+  }
+}

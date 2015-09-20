@@ -1,0 +1,12 @@
+mixin icon(data)
+  if(data === "menu")
+    span(class="menu-icon--wrapper")
+      span.menu-icon
+        span.menu-icon--top
+        span.menu-icon--middle
+        span.menu-icon--bottom
+      span.menu-icon--text MENU
+  if(data === "play")
+    span(class="play-icon")
+      span.play-icon--wrapper
+        i.fa.fa-play

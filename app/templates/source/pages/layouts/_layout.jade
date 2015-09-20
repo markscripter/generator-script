@@ -6,13 +6,17 @@ html(lang="en")
   block meta
     meta(charset="utf-8")
     meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="description" content="")
     meta(name="keywords" content="")
   
   block links
     link(rel="shortcut icon" href="/static/misc/favicon.ico")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
     link(type="text/css" rel="stylesheet" media="all" href="/css/stylesheet.min.css")
- body.container
+ body
+  .svg-store
+    //- include ../../svg/svg.min.jade
   include ../partials/_header.jade
   
   block content
@@ -21,4 +25,4 @@ html(lang="en")
   
   block scripts
     script(type="text/javascript" src="/js/libs.min.js")
-    script(type="text/javascript" src="/js/global.min.js")
+    script(type="text/javascript" src="/js/main.min.js")

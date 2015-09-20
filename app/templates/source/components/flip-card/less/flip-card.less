@@ -1,0 +1,52 @@
+@media @mq-md {
+  .flip-card {
+    perspective: 1000;
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+
+    &--wrapper {
+      transition: 0.6s;
+      transform-style: preserve-3d;
+      transform-origin: 100% 25px;
+
+      .back,
+      .front {
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 25px;
+      }
+
+      .back {
+        transform: rotateX(180deg);
+        background-color:@primary;
+      }
+
+      .front {
+        transform: rotateX(0deg);
+        z-index: 2;
+      }
+    }
+  }
+
+  .grid-item--link:hover {
+    .flip-card--wrapper {
+      transform: rotateX(180deg);
+    }
+  }
+
+  .no-csstransforms3d {
+    .grid-item--link:hover {
+      .flip-card .back {
+        display: block;
+      }
+      .flip-card .front {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+include ../../chevron/markup/double-chevron.jade
+
+//  data = {
+//    "heading" : "Heading Text",
+//    "paragraph" : "Paragraph Text",
+//    "link" : {
+//      "href" : "#",
+//      "target": "_blank",
+//      "text": "Link Text"
+//    }
+//  }
+
+mixin sectionHeading(heading, content)
+  section.section-heading
+    hgroup.heading
+      if (heading === 'h1')
+        h1 #{content.heading}
+      else if heading === 'h2'
+        h2 #{content.heading}
+      else if heading === 'h3'
+        h3 #{content.heading}
+      else 
+        h1 #{content.heading}
+      if (content.headingTwo)
+        h2 #{content.headingTwo}
+    if (content.paragraph)
+      p #{content.paragraph}
+    if block
+      block
+    if (content.link)
+      a.section-heading--link(href="#{content.link.href}" target="#{content.link.target}") #{content.link.text} 
+        +doubleChevron()

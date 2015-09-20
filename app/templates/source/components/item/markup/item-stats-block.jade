@@ -1,0 +1,25 @@
+include ../../chevron/markup/double-chevron.jade
+
+mixin itemStatsBlock(data)
+  each item in data
+    .item.item-stats-block
+      .item-container
+        a(href="#{item.link.href}" target="#{item.link.target}")
+          .item-stats-block--circle
+            .item-vertical
+              if item.stat
+                p.top #{item.stat.top}
+                p.bottom #{item.stat.bottom}
+                if item.icon.type === 'svg'
+                  // do svg
+                  svg.icon(xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+                    use(xlink:href="#{item.icon.def}")
+                else if item.icon.type === 'fontawesome'
+                  // do fontawesome
+                  i.icon.fa(class="#{item.icon.class}")
+      .item-text
+        if item.link
+          a.item-link(href="#{item.link.href}" target="#{item.link.target}") #{item.link.text} 
+            +doubleChevron()
+        if item.paragraph
+          p.item-paragraph #{item.paragraph}

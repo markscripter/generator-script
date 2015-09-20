@@ -16,6 +16,7 @@ After installing Node & NPM, install the NPM packages using these commands:
 
     sudo npm i -g eslint        // installs eslint
     sudo npm i -g babel         // es6 - es5 stuff
+    sudo npm i -g babel-core    // more babel stuff
     sudo npm i -g babel-eslint  // installs babel's plugin for eslint
     sudo npm i -g gulp          // installs Gulp
     sudo npm i -g jade          // templating library

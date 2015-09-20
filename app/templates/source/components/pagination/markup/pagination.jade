@@ -1,0 +1,30 @@
+include ../../chevron/markup/chevron.jade
+include ../../chevron/markup/chevron-left.jade
+
+mixin pagination()
+  .pagination.container
+    .desktop
+      a.prev(href="#" target="_self")
+        +chevronLeft()
+      a.page.current 1
+      a.page(href="#" target="_self") 2
+      a.page(href="#" target="_self") 3
+      a.page(href="#" target="_self") 4
+      a.page(href="#" target="_self") 5
+      a.page(href="#" target="_self") 6
+      a.page(href="#" target="_self") 7
+      a.page(href="#" target="_self") 8
+      a.page(href="#" target="_self") 9
+      a.page(href="#" target="_self") 10
+      a.next(href="#" target="_self")
+        +chevron()
+    .mobile
+      a.prev(href="#" target="_self")
+        +chevronLeft()
+      a.page.current 1
+      a.page(href="#" target="_self") 2
+      a.page(href="#" target="_self") 3
+      a.page ...
+      a.page(href="#" target="_self") 10
+      a.next(href="#" target="_self")
+        +chevron()
