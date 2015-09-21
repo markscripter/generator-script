@@ -15,6 +15,7 @@
       "/bower_components/lodash/lodash.min.js",
       "/bower_components/scrollReveal.js/dist/scrollReveal.min.js",
       "/bower_components/jquery/dist/jquery.min.js",
+      "/bower_components/jquery-colorbox/jquery.colorbox-min.js",
       "/bower_components/picturefill/dist/picturefill.min.js",
       "/bower_components/slick-carousel/slick/slick.min.js",
       "/bower_components/modernizr/modernizr.js"
@@ -33,7 +34,7 @@
     <% } %>
     "public": "/public/",
     "styleguide": {
-      "styles": "/source/styles/styleguide/styleguide.less",
+      "styles": "/source/styles/styleguide/styleguide.scss",
       <% if (useJade) {%>
       "pages": "/source/pages/styleguide.jade"
       <% } %>

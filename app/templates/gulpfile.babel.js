@@ -1,27 +1,28 @@
 /*
   Imports
 *************************/
+import babel from 'gulp-babel';
+import browserSync from 'browser-sync';
+import combiner from 'stream-combiner2';
+import concat from 'gulp-concat';
+import cssMinify from 'gulp-minify-css';
+import eslint from 'gulp-eslint';
+import glob from 'glob';
 import gulp from 'gulp';
 import jade from 'gulp-jade';
-import vash  from './helpers/gulp-vash';
-import uglify from 'gulp-uglify';
-import concat from 'gulp-concat';
-import less from 'gulp-less';
-import cssMinify from 'gulp-minify-css';
-import prefix from 'gulp-autoprefixer';
-import rename from 'gulp-rename';
 import jsdoc from 'gulp-jsdoc';
-import eslint from 'gulp-eslint';
-import wrapper from 'gulp-wrapper';
+import less from 'gulp-less';
+import path from 'path';
+import prefix from 'gulp-autoprefixer';
+import R from 'ramda';
+import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import svgstore from 'gulp-svgstore';
 import svgmin from 'gulp-svgmin';
-import combiner from 'stream-combiner2';
-import path from 'path';
-import glob from 'glob';
-import browserSync from 'browser-sync';
-import _ from 'lodash';
-import babel from 'gulp-babel';
+import uglify from 'gulp-uglify';
+import vash  from './helpers/gulp-vash';
+import webpack from 'webpack';
+import wrapper from 'gulp-wrapper';
 
 /*
   Import our config object
@@ -35,14 +36,14 @@ function pageData(root, comps) {
   const tempData = {};
 
   compData.forEach(function cb(page) {
-    _.extend(tempData, require(page));
+    R.merge(tempData, require(page));
   });
 
   // since require will cache the origin items returned from the require(root) call,
   // we need to delete the cache so it fetches any updated data from the json file
   delete require.cache[require.resolve(root)];
 
-  return _.extend(tempData, data);
+  return R.merge(tempData, data);
 }
 
 /*
