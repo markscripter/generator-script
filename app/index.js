@@ -97,6 +97,12 @@ module.exports = generators.Base.extend({
         }
       );
     },
+    webpack: function(){
+      this.fs.copyTpl(
+        this.templatePath('webpack.config.js'),
+        this.destinationPath('webpack.config.js')
+      );
+    },
     eslint: function(){
       this.fs.copyTpl(
         this.templatePath('.eslintrc'),
