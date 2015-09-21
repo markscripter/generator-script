@@ -28,23 +28,7 @@ button{
   outline: none;
 }
 
-form {
-  .error-message {
-    display: none;
-  }
-
-  .error {
-    color:@error !important;
-
-    & + .error-message {
-      color:@error !important;
-      display: block;
-      font-family: @sans-serif;
-      padding: 0px 5%;
-      margin: 10px 0px;
-    }
-  }
-}
+form {}
 
 .form {
   &-wrapper {
@@ -77,16 +61,17 @@ form {
   }
 }
 input {
+  -webkit-appearance: none;
+  border:none;
   box-sizing:border-box;
   color:@gray--medium;
   display: block;
-  margin: 15px auto;
-  padding: 0px 10px;
   font-family:@sans-serif;
   font-size:@font-size;
+  line-height: 1.25em;
+  margin: 15px auto;
+  padding: 0px 10px;
   width:100%;
-  -webkit-appearance: none;
-  border:none;
 
   &:focus {
     outline: none;
@@ -118,11 +103,8 @@ input {
 }
 label {
   font-family:@sans-serif;
-  font-size:@font-size--small;
-  color: @gray--darker;
-  box-sizing: border-box;
+  font-size:@font-size;
+  color: @gray;
 }
 
-select {
-  margin: 0 10px;
-}
+select {}
